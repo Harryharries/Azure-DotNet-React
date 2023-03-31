@@ -78,6 +78,7 @@ namespace Medfar.Interview.DAL.Repositories
                 //search the userQuery where the user's first name, last name or both, contains the filter text.
                 //If the filter text contains any whitespace, it's also checked if the full name matches the filter text.
                 userQuery = userQuery.Where(u =>
+                    u.email.Contains(filter) ||
                     u.first_name.Contains(filter) ||
                     u.last_name.Contains(filter) ||
                     (filter.Any(char.IsWhiteSpace) && (u.first_name.ToLower() + " " + u.last_name.ToLower()).Contains(filter))
